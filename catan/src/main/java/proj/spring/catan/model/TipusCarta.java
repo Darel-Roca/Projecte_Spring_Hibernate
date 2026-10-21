@@ -1,4 +1,4 @@
-package catan;
+package proj.spring.catan.model;
 
 public enum TipusCarta {
 	CAVALLER,MONOPOLI,PUNT_VICTORIA

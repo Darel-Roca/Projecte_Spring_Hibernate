@@ -1,4 +1,4 @@
-package catan;
+package proj.spring.catan.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

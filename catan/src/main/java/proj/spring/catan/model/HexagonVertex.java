@@ -1,4 +1,4 @@
-package catan;
+package proj.spring.catan.model;
 
 import jakarta.persistence.*;
 import java.util.Objects;
