@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import proj.spring.catan.model.Jugador;
 import proj.spring.catan.service.PartidaService;
 
@@ -22,7 +23,7 @@ public class PartidaController {
 	}
 	
 	@PostMapping()
-	ResponseEntity<?> iniciarPartida(@RequestBody List<Jugador> jugadors, @RequestBody(required = false) int puntsVictoria) {
+	ResponseEntity<?> iniciarPartida(@Valid @RequestBody List<String> jugadors, @Valid @RequestBody(required = false) int puntsVictoria) {
 		return service.iniciarPartida(jugadors, puntsVictoria);
 	}
 	
