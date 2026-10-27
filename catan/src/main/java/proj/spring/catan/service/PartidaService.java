@@ -2,10 +2,12 @@ package proj.spring.catan.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import io.swagger.v3.core.util.Json;
 import proj.spring.catan.repository.PartidaRepository;
 
+@Service
 public class PartidaService {
 	
 	@Autowired

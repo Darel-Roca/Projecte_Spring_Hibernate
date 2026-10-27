@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.core.util.Json;
 import proj.spring.catan.service.PartidaService;
 
+@RestController
+@RequestMapping(path="/api/partida")
 public class PartidaController {
 	
 	@Autowired
