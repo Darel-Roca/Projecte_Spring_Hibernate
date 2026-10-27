@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import io.swagger.v3.core.util.Json;
+import proj.spring.catan.model.Construccio;
 import proj.spring.catan.model.Jugador;
 import proj.spring.catan.repository.JugadorRepository;
 
@@ -26,7 +26,7 @@ public class JugadorService {
 		}
 	}
 
-	public ResponseEntity<?> construir(int idJugador, Json construccio) {
+	public ResponseEntity<?> construir(int idJugador, Construccio construccio) {
 		return null;
 	}
 

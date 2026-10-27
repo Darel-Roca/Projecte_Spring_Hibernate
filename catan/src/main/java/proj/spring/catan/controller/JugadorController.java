@@ -5,12 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.core.util.Json;
+import proj.spring.catan.model.Construccio;
 import proj.spring.catan.service.JugadorService;
 
 
 @RestController
 
-@RequestMapping(path={"/api/jugador", "/api/jugadors"})
+@RequestMapping(path={"/api/jugador"})
 public class JugadorController {
 	
 	@Autowired
@@ -22,7 +23,7 @@ public class JugadorController {
 	}
 
 	@PostMapping(path="/{idJugador}/construir")
-	ResponseEntity<?> construir(@PathVariable int idJugador, @RequestBody Json construccio) {
+	ResponseEntity<?> construir(@PathVariable int idJugador, @RequestBody Construccio construccio) {
 		return service.construir(idJugador, construccio);
 	}
 
