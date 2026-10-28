@@ -1,6 +1,7 @@
 package proj.spring.catan.controller;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,17 +19,17 @@ public class PartidaController {
 	private PartidaService service;
 	
 	@GetMapping(path="/{idPartida}/tauler")
-	ResponseEntity<?> busca(@PathVariable int idPartida) {
+	ResponseEntity<?> busca(@Valid @PathVariable int idPartida) {
 		return service.busca(idPartida);
 	}
 	
 	@PostMapping()
-	ResponseEntity<?> iniciarPartida(@Valid @RequestBody List<String> jugadors, @Valid @RequestBody(required = false) int puntsVictoria) {
-		return service.iniciarPartida(jugadors, puntsVictoria);
+	ResponseEntity<?> iniciarPartida(@Valid @RequestBody String[] jugadors, @Valid @RequestBody int puntsVictoria) {
+		return service.iniciarPartida(jugadors, Objects.isNull(puntsVictoria) ? 10 : puntsVictoria);
 	}
 	
 	@PostMapping(path="/{idPartida}/daus")
-	ResponseEntity<?> tirarDaus(@PathVariable int idPartida) {
+	ResponseEntity<?> tirarDaus(@Valid@PathVariable int idPartida) {
 		return service.tirarDaus(idPartida);
 	}
 
