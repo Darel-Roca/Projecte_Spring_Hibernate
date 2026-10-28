@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import io.swagger.v3.core.util.Json;
-import proj.spring.catan.model.Construccio;
 import proj.spring.catan.service.JugadorService;
 
 
@@ -23,8 +21,9 @@ public class JugadorController {
 	}
 
 	@PostMapping(path="/{idJugador}/construir")
-	ResponseEntity<?> construir(@PathVariable int idJugador, @RequestBody Construccio construccio) {
-		return service.construir(idJugador, construccio);
+	ResponseEntity<?> construir(@PathVariable int idJugador, @RequestParam("tipus") String tipus,
+			@RequestParam("posicio") int posicio) {
+		return service.construir(idJugador, tipus, posicio);
 	}
 
 	@PostMapping(path="/{idJugador}/passar")
