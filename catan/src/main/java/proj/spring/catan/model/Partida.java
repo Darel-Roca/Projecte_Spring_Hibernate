@@ -90,7 +90,6 @@ public class Partida {
 	private List<CartaDesenvolupament> pila = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	@JsonIgnore
 	private List<Hexagon> tauler = new ArrayList<>();
 	
 	@OneToOne(fetch = FetchType.LAZY, optional = true)
