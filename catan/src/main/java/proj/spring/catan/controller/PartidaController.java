@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import proj.spring.catan.service.PartidaService;
+import proj.spring.catan.dto.PartidaPeticio;
 
 @RestController
 @RequestMapping(path="/api/partida")
@@ -22,8 +23,8 @@ public class PartidaController {
 	}
 	
 	@PostMapping()
-	ResponseEntity<?> iniciarPartida(@Valid @RequestBody List<String> jugadors, @Valid @RequestBody(required = false) Integer puntsVictoria) {
-		return service.iniciarPartida(jugadors, puntsVictoria == null ? 10 : puntsVictoria);
+	ResponseEntity<?> iniciarPartida(@Valid @RequestBody PartidiaPeticio pp) {
+		return service.iniciarPartida(pp.jugadors, pp.puntsVictoria == null ? 10 : pp.puntsVictoria);
 	}
 	
 	@PostMapping(path="/{idPartida}/daus")
