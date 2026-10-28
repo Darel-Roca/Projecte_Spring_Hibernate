@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import proj.spring.catan.dto.PartidaResposta;
 import proj.spring.catan.model.*;
 import proj.spring.catan.repository.PartidaRepository;
 
@@ -102,7 +103,7 @@ public class PartidaService {
         	e.printStackTrace();
         }
         repository.save(partida);
-		return ResponseEntity.ok(partida);
+		return ResponseEntity.ok(PartidaResposta.de(partida));
 	}
 	
 	public ResponseEntity<?> tirarDaus(int idPartida) {
