@@ -31,6 +31,17 @@ public class JugadorService {
 	}
 
 	public ResponseEntity<?> construir(int idJugador, String tipus, int posicio) {
+		switch (tipus) {
+		case ("CARRETERA"):
+
+			break;
+		case ("POBLAT "):
+			break;
+		case ("CIUTAT"):
+			break;
+		default:
+			break;
+		}
 
 		return null;
 	}
@@ -38,13 +49,13 @@ public class JugadorService {
 	public ResponseEntity<?> passar(int idJugador) {
 
 		Optional<Jugador> jugadorOpt = repository.findById(idJugador);
-		if (jugadorOpt.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existeix el jugador");
-		}
 		Jugador jugador = jugadorOpt.get();
+		if (jugadorOpt.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existeix el jugador" + jugador.getNom());
+		}
 
 		if (!jugador.isActiu()) {
-			return ResponseEntity.badRequest().body("El jugador no està actiu");
+			return ResponseEntity.badRequest().body("El jugador" + jugador.getNom() + "no està actiu");
 		}
 
 		Partida partida = jugador.getPartida();
@@ -69,7 +80,8 @@ public class JugadorService {
 			}
 
 			if (assentaments < partida.getRonda() || carreteres < partida.getRonda()) {
-				return ResponseEntity.badRequest().body("El jugador encara no ha col·locat el poblat i la carretera");
+				return ResponseEntity.badRequest()
+						.body("El jugador " + jugador.getNom() + "encara no ha col·locat el poblat i la carretera");
 			}
 		}
 
