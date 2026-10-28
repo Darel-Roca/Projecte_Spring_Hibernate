@@ -3,6 +3,8 @@ package proj.spring.catan.model;
 import jakarta.persistence.*;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "hexagon_vertex", uniqueConstraints = {
     @UniqueConstraint(columnNames = { "hexagon_id", "vertex_id" })
@@ -15,10 +17,12 @@ public class HexagonVertex {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "hexagon_id", nullable = false)
+	@JsonIgnore
     private Hexagon hexagon;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "vertex_id", nullable = false)
+	@JsonIgnore
     private Vertex vertex; 
 
     @Column(nullable = false)

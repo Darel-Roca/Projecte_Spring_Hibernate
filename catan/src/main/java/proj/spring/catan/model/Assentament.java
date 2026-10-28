@@ -2,6 +2,8 @@ package proj.spring.catan.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,6 +16,7 @@ public abstract class Assentament extends Construccio {
 	@NotNull
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "vertex_id", nullable = false, unique = true)
+	@JsonIgnore
 	private Vertex vertex;
 
 	public Vertex getVertex() {

@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -28,11 +30,13 @@ public class Aresta {
 	@NotNull(message = "Els vertexs son obligatoris")
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "vertex_a_id", nullable = false)
+	@JsonIgnore
 	private Vertex vertexA;
 
 	@NotNull(message = "Els vertexs son obligatoris")
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "vertex_b_id", nullable = false)
+	@JsonIgnore
 	private Vertex vertexB;
 	
 	@OneToOne(mappedBy = "aresta", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)

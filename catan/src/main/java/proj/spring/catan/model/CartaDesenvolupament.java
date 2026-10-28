@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,10 +32,12 @@ public class CartaDesenvolupament {
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "partida_id", nullable = false)
+	@JsonIgnore
 	private Partida partida;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "jugador_id", nullable = true) 
+	@JsonIgnore
     private Jugador jugador;
 	
 	@NotNull

@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -19,6 +21,7 @@ public class Vertex {
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "partida_id", nullable = false)
+	@JsonIgnore
 	private Partida partida;
 	
 	@NotNull(message = "El codi és obligatori")

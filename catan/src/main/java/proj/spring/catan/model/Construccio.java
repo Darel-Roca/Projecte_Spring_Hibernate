@@ -2,6 +2,8 @@ package proj.spring.catan.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @MappedSuperclass
@@ -14,6 +16,7 @@ public abstract class Construccio {
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "jugador_id", nullable = false)
+	@JsonIgnore
 	private Jugador jugador;
 
 	public Integer getId() {

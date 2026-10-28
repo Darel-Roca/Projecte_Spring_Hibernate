@@ -1,14 +1,12 @@
 package proj.spring.catan.controller;
 
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
-import proj.spring.catan.model.Jugador;
 import proj.spring.catan.service.PartidaService;
 
 @RestController
@@ -24,8 +22,8 @@ public class PartidaController {
 	}
 	
 	@PostMapping()
-	ResponseEntity<?> iniciarPartida(@Valid @RequestBody String[] jugadors, @Valid @RequestBody int puntsVictoria) {
-		return service.iniciarPartida(jugadors, Objects.isNull(puntsVictoria) ? 10 : puntsVictoria);
+	ResponseEntity<?> iniciarPartida(@Valid @RequestBody List<String> jugadors, @Valid @RequestBody(required = false) Integer puntsVictoria) {
+		return service.iniciarPartida(jugadors, puntsVictoria == null ? 10 : puntsVictoria);
 	}
 	
 	@PostMapping(path="/{idPartida}/daus")

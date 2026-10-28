@@ -28,22 +28,22 @@ public class PartidaService {
 		}
 	}
 	
-	public ResponseEntity<?> iniciarPartida(String[] jugadors, int puntsVictoria) {
-		Partida partida = new  Partida();
+	public ResponseEntity<?> iniciarPartida(List<String> jugadors, int puntsVictoria) {
+		Partida partida = new Partida();
 		partida.setEstat(EstatPartida.PREPARACIO);
 		partida.setDataInici(LocalDate.now());
 		partida.setRonda(1); 
 		partida.setUltimaTirada(1); 
-		partida.setPuntsPerGuanyar(Objects.isNull(puntsVictoria) ? 10 : puntsVictoria);
+		partida.setPuntsPerGuanyar(10);
         partida.setDausTirats(false);
         partida.setLladrePendent(false);
         Collections.shuffle(jugadors);
         ColorJugador[] colors = ColorJugador.values();
         List<Jugador> llistaJugadors = new ArrayList<>();
 
-        for (int i = 0; i < jugadors.length; i++) {
+        for (int i = 0; i < jugadors.size(); i++) {
             Jugador j = new Jugador();
-            j.setNom(jugadors[i]);
+            j.setNom(jugadors.get(i));
             j.setPartida(partida);
             j.setColor(colors[i]);
             j.setOrdreTorn(i + 1);

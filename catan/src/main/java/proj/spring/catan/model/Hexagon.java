@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -19,6 +21,7 @@ public class Hexagon {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "partida_id", nullable = false)
+	@JsonIgnore
 	private Partida partida;
 
 	@NotNull(message = "El codi és obligatori")
@@ -44,6 +47,7 @@ public class Hexagon {
 	private Integer numero;
 
 	@OneToMany(mappedBy = "hexagon", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<HexagonVertex> hexagonvertices = new ArrayList<>();
 
 	public Integer getCodi() {

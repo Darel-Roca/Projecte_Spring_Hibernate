@@ -6,6 +6,8 @@ import java.util.Objects;
 
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -20,6 +22,7 @@ public class Jugador {
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "partida_id", nullable = false)
+	@JsonIgnore
 	private Partida partida;
 	
 	@NotBlank(message = "El nom és obligatori")
@@ -50,9 +53,11 @@ public class Jugador {
 	private boolean guanyador;
 	
 	@OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
     private List<CartaDesenvolupament> ma = new ArrayList<>();
 
 	@OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	@Size(max=5)
 	private List<RecursJugador> inventari = new ArrayList<>();
 	

@@ -7,6 +7,8 @@ import java.util.Objects;
 
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -71,30 +73,38 @@ public class Partida {
 	private boolean lladrePendent;
 
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Jugador> jugadors = new ArrayList<>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "actiu_jugador_id", nullable = true)
+	@JsonIgnore
 	private Jugador actiu;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "guanyador_jugador_id", nullable = true)
+	@JsonIgnore
 	private Jugador guanyador;
 	
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<CartaDesenvolupament> pila = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Hexagon> tauler = new ArrayList<>();
 	
 	@OneToOne(fetch = FetchType.LAZY, optional = true)
+	@JsonIgnore
 	@JoinColumn(name = "lladre", nullable = true)
 	private Hexagon lladre;
 	
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Aresta> arestas = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Vertex> vertexs = new ArrayList<>();
 	
 	public Partida() {

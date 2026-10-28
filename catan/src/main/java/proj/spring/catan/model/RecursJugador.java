@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -18,6 +20,7 @@ public class RecursJugador {
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "jugador_id", nullable = false)
+	@JsonIgnore
 	private Jugador jugador;
 	
 	@NotNull(message = "El tipus és obligatori")

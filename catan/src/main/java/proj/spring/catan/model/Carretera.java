@@ -2,6 +2,8 @@ package proj.spring.catan.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -12,6 +14,7 @@ public class Carretera extends Construccio {
 	@NotNull
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "aresta_id", nullable = false, unique = true)
+	@JsonIgnore
 	private Aresta aresta;
 
 	public Aresta getAresta() {
