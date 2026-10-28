@@ -23,8 +23,8 @@ public class PartidaController {
 	}
 	
 	@PostMapping()
-	ResponseEntity<?> iniciarPartida(@Valid @RequestBody PartidiaPeticio pp) {
-		return service.iniciarPartida(pp.jugadors, pp.puntsVictoria == null ? 10 : pp.puntsVictoria);
+	ResponseEntity<?> iniciarPartida(@RequestBody PartidaPeticio pp) {
+		return service.iniciarPartida(pp.jugadors(), pp.puntsVictoria() == null ? 10 : pp.puntsVictoria());
 	}
 	
 	@PostMapping(path="/{idPartida}/daus")

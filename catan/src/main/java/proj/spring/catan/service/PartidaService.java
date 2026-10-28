@@ -34,7 +34,7 @@ public class PartidaService {
 		partida.setDataInici(LocalDate.now());
 		partida.setRonda(1); 
 		partida.setUltimaTirada(1); 
-		partida.setPuntsPerGuanyar(10);
+		partida.setPuntsPerGuanyar(puntsVictoria);
         partida.setDausTirats(false);
         partida.setLladrePendent(false);
         Collections.shuffle(jugadors);
@@ -101,7 +101,7 @@ public class PartidaService {
         } catch (Exception e) {
         	e.printStackTrace();
         }
-        
+        repository.save(partida);
 		return ResponseEntity.ok(partida);
 	}
 	

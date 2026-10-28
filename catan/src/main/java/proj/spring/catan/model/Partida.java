@@ -73,7 +73,6 @@ public class Partida {
 	private boolean lladrePendent;
 
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	@JsonIgnore
 	private List<Jugador> jugadors = new ArrayList<>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
